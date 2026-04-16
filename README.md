@@ -1,4 +1,4 @@
-![RoGit Logo](images/Small_RoGit_Icon.png)
+![RoGit Logo](images/Small_RoGit_Icon_Semi_Focused.png)
 
 # RoGit - Git for Roblox Studio
 
