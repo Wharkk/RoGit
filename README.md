@@ -1,12 +1,14 @@
-# RoGit — Git for Roblox Studio
+![RoGit Logo](images/Small_RoGit_Icon.png)
 
-**Full GitHub version control directly inside Roblox Studio. Push, pull, diff, branch, and collaborate — without ever leaving the editor.**
+# RoGit - Git for Roblox Studio
+
+**Full GitHub version control for Roblox Studio. Push, pull, diff, branch, and collaborate with others professionally without leaving the IDE.**
 
 ---
 
 ## About
 
-RoGit brings real Git workflows to Roblox Studio. Connect any GitHub repository and manage your entire project with professional version control tools — all from a clean, in-editor UI built on the Catppuccin Mocha theme.
+RoGit brings real Git workflows to Roblox Studio. Connect any GitHub repository and manage your entire project with professional version control tools, all from a clean, in-editor UI built on the Catppuccin Mocha theme.
 
 Built for teams and solo developers who want real version control without external toolchains like Rojo or manual file exports. RoGit handles serialization, conflict resolution, and collaboration features so you can focus on building your game.
 
@@ -16,19 +18,19 @@ Built for teams and solo developers who want real version control without extern
 
 ### Zero External Tools
 
-No CLI. No file watchers. No syncing folders. Connect your GitHub repo, click Push, and your project is versioned. Everything runs inside Studio with a native plugin UI that feels like it belongs there.
+No CLI. No file watchers. No syncing folders. Connect your GitHub repo, click Push, and your project is versioned. Everything runs inside Studio with a native plugin UI.
 
 ### Smart Serialization
 
-RoGit doesn't just dump raw data — it understands Roblox. Object references (PrimaryPart, Welds, Motor6D, Adornee) survive round-trips. Same-name siblings are disambiguated automatically. Path-unsafe instance names (`Foo/Bar`, `CON`, empty strings) are sanitized for git and restored on pull. Script metadata (Enabled, RunContext) persists via `.meta.json` sidecars.
+RoGit doesn't just dump raw data, it understands Roblox. Object references (PrimaryPart, Welds, Motor6D, Adornee) survive round-trips. Same-name siblings are disambiguated automatically. Path-unsafe instance names (`Foo/Bar`, `CON`, `Weird*?"<>|:Chars`, empty strings) are sanitized for git and restored on pull. Script metadata (Enabled, RunContext) persists via `.meta.json` sidecars.
 
 ### Safe by Design
 
-Pull never overwrites your unpushed local edits — dirty files are preserved with a clear log message. Every pull and clone wraps in ChangeHistoryService, so one Ctrl+Z reverts the entire operation. A confirmation dialog prevents accidental Quick Pushes. Cold pulls are gated behind a remote cache fetch so conflict detection always works.
+Pull never overwrites your unpushed local edits, dirty files are preserved with a clear log message. Every pull and clone wraps in ChangeHistoryService, so one Ctrl+Z reverts the entire operation. A confirmation dialog prevents accidental Quick Pushes. Cold pulls are gated behind a remote cache fetch so conflict detection always works.
 
 ### Team Ready
 
-Create and switch branches, open pull requests, monitor GitHub Actions, create tagged releases, and see your team's recent activity — all without leaving Studio.
+Create and switch branches, open pull requests, monitor GitHub Actions, create tagged releases, and see your team's recent activity, all without leaving Studio.
 
 ---
 
@@ -45,7 +47,7 @@ Create and switch branches, open pull requests, monitor GitHub Actions, create t
 | **Git Core** | Push (Selective) | Checkbox per file (default unchecked), commit message, progress bar |
 | | Push (Quick) | One-click push all with confirmation dialog and auto-generated message |
 | | Pull | Downloads and applies remote changes while preserving unpushed local edits |
-| | Pull (Cold Gate) | First pull after connect forces remote cache before applying — no blind overwrites |
+| | Pull (Cold Gate) | First pull after connect forces remote cache before applying, no blind overwrites |
 | | Conflict Detection | Identifies files changed both locally and remotely |
 | | Conflict Resolution | Side-by-side merge editor: Accept Theirs / Accept Mine per file |
 | | Remote Delete | Files deleted on remote are removed locally on pull via reconciliation |
@@ -53,7 +55,7 @@ Create and switch branches, open pull requests, monitor GitHub Actions, create t
 | | Branch Merge | Merge any branch into current, conflict error handling |
 | | Revert Commit | Hover R button on any commit in history |
 | | Auto-Refresh Staging | Debounced, triggers on DescendantAdded/Removing with applyingRemote guard |
-| | Undo Support | Every pull/clone wrapped in ChangeHistoryService — Ctrl+Z reverts the full operation |
+| | Undo Support | Every pull/clone wrapped in ChangeHistoryService, Ctrl+Z reverts the full operation |
 | **Diff** | Diff Viewer | Float DockWidget, opens like a script tab |
 | | File Sidebar | Lists changed files with [A]/[M]/[D] badges |
 | | Syntax Highlighting | Full Luau tokenizer: keywords, strings, comments, numbers, types, operators |
@@ -68,9 +70,9 @@ Create and switch branches, open pull requests, monitor GitHub Actions, create t
 | **Search** | Search Across Files | Local grep through all serialized files, path:line results |
 | **Serialization** | Scripts | `.server.luau`, `.client.luau`, `.luau` with `_init` folder pattern |
 | | Instances | `.json` with properties, attributes, tags |
-| | Object References | PrimaryPart, Part0/Part1, Attachment0/1, Adornee — deferred resolution on pull |
+| | Object References | PrimaryPart, Part0/Part1, Attachment0/1, Adornee each deferred resolution on pull |
 | | Same-Name Siblings | `__N` disambiguation with class-aware matching on apply |
-| | Path-Safe Names | `/\:*?"<>|`, reserved Windows names, `..`, empty strings — all sanitized and restored |
+| | Path-Safe Names | Reserved Windows name, special characters or even empty strings in any instance's name are all sanitized and restored |
 | | Script Metadata | `.meta.json` sidecar for attributes, tags, Enabled, RunContext |
 | | `_init` Sentinel | User-named `_init` instances safely escaped to `__init` and restored |
 | | README.md | ServerStorage/README ModuleScript synced as `README.md` |
@@ -114,34 +116,32 @@ Create and switch branches, open pull requests, monitor GitHub Actions, create t
 
 ### 1. Get a GitHub Personal Access Token
 
-Go to [github.com/settings/tokens](https://github.com/settings/tokens) and create a **Classic** token with the `repo` scope. Copy it immediately — it's only shown once.
+Go to [github.com/settings/tokens](https://github.com/settings/tokens) and create a **Classic** token with the `repo` scope. Copy it immediately, and store it somewhere safe. It's only shown once.
 
 ### 2. Open RoGit
 
 Click the RoGit toolbar button. The 4-step setup wizard guides you through connecting:
 
-1. **Welcome** — Overview of what RoGit does
-2. **HTTP Setup** — Enable HTTP Requests in Game Settings > Security
-3. **Token Guide** — Step-by-step PAT creation instructions
-4. **Connect** — Enter owner, repo, branch, token, and hit Connect & Start
+1. **Welcome** - Overview of what RoGit does
+2. **Token Guide** - Step-by-step PAT creation instructions
+3. **Connect** - Enter owner, repo, branch, token, and hit Connect & Start
 
 ### 3. Push Your First Commit
 
 1. Make changes in Studio (add a Part, edit a Script)
-2. Open the **Changed Files** panel — your changes appear with `[A]`/`[M]`/`[D]` badges
+2. Open the **Changed Files** panel, your changes appear with `[A]`/`[M]`/`[D]` badges
 3. Check the files you want to push
-4. Write a commit message and click **Push**
+4. Write a commit message (e.g. "Initial commit") and click **Commit & Push**
 
 ### 4. Pull Remote Changes
 
-Click **Pull** to fetch and apply remote changes. If there are conflicts, the side-by-side resolver opens automatically.
+Click the pull icon ![Pull Icon](images/Really_Small_RoGit_Pull.png) to fetch and apply remote changes. If there are conflicts, the side-by-side resolver opens automatically.
 
 ---
 
 ## Requirements
 
-- Roblox Studio with **HTTP Requests** enabled (Game Settings > Security)
-- A GitHub account with a Personal Access Token (`repo` scope)
+- A GitHub account with a Personal Access Token (with the `repo` scope)
 - A GitHub repository (public or private)
 
 ---
@@ -160,7 +160,7 @@ ServerScriptService/
     Wall__2.json                  -- Second (disambiguated)
 Workspace/
   Model/
-    _init.json                    -- Model properties (incl. PrimaryPart ref)
+    _init.json                    -- Model properties (including PrimaryPart ref)
     Part.json
     WeldConstraint.json           -- With Part0/Part1 references
 README.md                        -- From ServerStorage.README
@@ -171,7 +171,7 @@ README.md                        -- From ServerStorage.README
 ## Known Limitations (v1)
 
 - **Dotted instance names** (e.g., `v1.0.2`) may break object reference resolution
-- **CRLF normalization** is not applied — cross-platform teams should agree on a line-ending convention
+- **CRLF normalization** is not applied, cross-platform teams should agree on a line-ending convention
 - **Conflict resolver** is whole-file only (no per-line merge)
 - **Branch switching** during an in-flight operation may cause unexpected behavior
 
